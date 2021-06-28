@@ -11,4 +11,5 @@
     backup: yes
   become: true
   become_user: root
+  notify: restart_cups_print_client
 
