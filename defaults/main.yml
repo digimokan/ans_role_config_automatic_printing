@@ -1,0 +1,3 @@
+# enable system-wide "print to PDF" option for all printing dialogs
+enable_print_to_pdf: true
+

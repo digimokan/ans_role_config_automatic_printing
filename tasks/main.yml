@@ -1,0 +1,3 @@
+- name: "Install system print client"
+  ansible.builtin.include_tasks: print_client/main.yml
+
