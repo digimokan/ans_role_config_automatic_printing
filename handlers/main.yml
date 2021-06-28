@@ -1,0 +1,8 @@
+- name: "Restart CUPS print client service"
+  ansible.builtin.service:
+    name: cups
+    state: restarted
+  become: true
+  become_user: root
+  listen: restart_cups_print_client
+

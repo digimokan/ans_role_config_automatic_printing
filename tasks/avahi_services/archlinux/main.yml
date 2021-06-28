@@ -1,0 +1,28 @@
+# see https://wiki.archlinux.org/title/CUPS#Network
+
+- name: "Install the 'avahi' service-discovery package"
+  community.general.pacman:
+    name: avahi
+    state: present
+  become: true
+  become_user: root
+  notify: restart_cups_print_client
+
+- name: "Install the 'nss-mdns' hostname resolution package"
+  community.general.pacman:
+    name: nss-mdns
+    state: present
+    extra_args: "--asdeps"
+  become: true
+  become_user: root
+  notify: restart_cups_print_client
+
+- name: "Ensure 'avahi-daemon' service is started, and enable it to start at boot"
+  ansible.builtin.service:
+    name: avahi-daemon
+    state: started
+    enabled: yes
+  become: true
+  become_user: root
+  notify: restart_cups_print_client
+

@@ -1,3 +1,9 @@
 - name: "Install system print client"
   ansible.builtin.include_tasks: print_client/main.yml
 
+- name: "Install avahi service discovery and utilities"
+  ansible.builtin.include_tasks: avahi_services/main.yml
+
+- name: "Configure avahi for services hostname resolution"
+  ansible.builtin.include_tasks: hostname_resolution/main.yml
+
