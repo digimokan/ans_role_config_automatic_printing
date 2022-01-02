@@ -1,9 +1,19 @@
-- name: "Install system print client"
-  ansible.builtin.include_tasks: print_client/main.yml
-
 - name: "Install and configure Avahi"
   ansible.builtin.include_role:
     name: ans_role_config_avahi
   vars:
     enable_host_discovery_service: true
+
+- name: "Notify for restart of cups-related services if avahi config changed"
+  ansible.builtin.include_tasks: func/notify_service_restarts.yml
+  when: avahi_config_changed
+  notify:
+    - restart_cupsd_service
+    - restart_devfs_service
+
+- name: "Install system print client"
+  ansible.builtin.include_tasks: print_client/main.yml
+
+- name: "Flush handlers to ensure services are restarted as required"
+  ansible.builtin.meta: flush_handlers
 

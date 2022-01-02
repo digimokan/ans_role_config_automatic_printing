@@ -1,0 +1,32 @@
+- name: "Install the 'cups' print server/client package"
+  ansible.builtin.package:
+    name: cups
+    state: present
+  become: true
+  become_user: root
+  notify: restart_cupsd_service
+
+- name: "Install the 'cups-filters' filters and misc-internals package"
+  ansible.builtin.package:
+    name: cups-filters
+    state: present
+  become: true
+  become_user: root
+  notify: restart_cupsd_service
+
+- name: "Install the 'cups-pdf' print-to-pdf-support package"
+  ansible.builtin.package:
+    name: cups-pdf
+    state: present
+  become: true
+  become_user: root
+  notify: restart_cupsd_service
+  when: enable_print_to_pdf
+
+- name: "Enable 'cupsd' service to start at boot"
+  ansible.builtin.service:
+    name: cupsd
+    enabled: yes
+  become: true
+  become_user: root
+

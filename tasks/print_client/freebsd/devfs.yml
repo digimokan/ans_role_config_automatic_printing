@@ -1,0 +1,39 @@
+- name: "Add devfs rules to set print device permissions for 'cups' group"
+  ansible.builtin.blockinfile:
+    path: "{{ freebsd_devfs_rules_path }}"
+    block: |
+      add path 'unlpt*' mode 0660 group cups
+      add path 'ulpt*' mode 0660 group cups
+      add path 'lpt*' mode 0660 group cups
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: cups print-device rules"
+    state: present
+    create: yes
+    owner: 'root'
+    mode: '644'
+  become: true
+  become_user: root
+  notify: restart_devfs_service
+
+- name: "Add mime type to support CUPS printing"
+  ansible.builtin.blockinfile:
+    path: "{{ freebsd_cups_mime_types_path }}"
+    block: 'application/octet-stream'
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: cups mime types"
+    state: present
+    create: yes
+    owner: 'root'
+    mode: '644'
+  become: true
+  become_user: root
+  notify: restart_devfs_service
+
+- name: "Enable devfs service to start at boot"
+  community.general.sysrc:
+    path: "{{ freebsd_rc_conf_path }}"
+    name: 'devfs_system_ruleset'
+    value: 'system'
+    state: present
+  become: true
+  become_user: root
+  notify: restart_devfs_service
+

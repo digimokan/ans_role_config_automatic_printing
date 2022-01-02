@@ -4,7 +4,7 @@
     state: restarted
   become: true
   become_user: root
-  listen: restart_cupsd_service
+  listen: restart_cupsd_serice
 
 - name: "Restart devfs service"
   ansible.builtin.service:
@@ -12,5 +12,5 @@
     state: restarted
   become: true
   become_user: root
-  listen: restart_devfs_service
+  listen: restart_devfs_serice
 

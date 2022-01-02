@@ -2,3 +2,7 @@
   ansible.builtin.include_tasks: archlinux/main.yml
   when: ansible_os_family == "Archlinux"
 
+- name: "Install print client for FreeBSD"
+  ansible.builtin.include_tasks: freebsd/main.yml
+  when: ansible_os_family == "FreeBSD"
+
