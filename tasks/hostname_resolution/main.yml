@@ -1,4 +1,0 @@
-- name: "Configure hostname resolution, for a linux system"
-  ansible.builtin.include_tasks: linux/main.yml
-  when: ansible_system == "Linux"
-
