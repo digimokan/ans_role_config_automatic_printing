@@ -1,0 +1,9 @@
+# config file for host info, network info, and services to start at boot
+freebsd_rc_conf_path: '/etc/rc.conf'
+
+# path to devfs.rules config file
+freebsd_devfs_rules_path: '/etc/devfs.rules'
+
+# path to cups mime-types config file
+freebsd_cups_mime_types_path: '/usr/local/etc/cups/mime.types'
+
