@@ -51,6 +51,7 @@ Configure automatic printer discovery and IPP Everywhere driverless printing.
 ## Supported Operating Systems
 
 * Arch Linux.
+* FreeBSD.
 
 ## Quick Start
 
