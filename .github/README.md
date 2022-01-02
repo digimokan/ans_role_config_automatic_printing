@@ -88,7 +88,7 @@ Configure automatic printer discovery and IPP Everywhere driverless printing.
 
 See the role `defaults` file, for overridable vars:
 
-  * [defaults/main.yml](../defaults/main/)
+  * [defaults/main/](../defaults/main/)
 
 ## Contributing
 
