@@ -13,6 +13,7 @@ Configure automatic printer discovery and IPP Everywhere driverless printing.
 * [Quick Start](#quick-start)
     * [Use From Playbook](#use-from-playbook)
 * [Role Options](#role-options)
+* [Role Dependencies](#role-dependencies)
 * [Contributing](#contributing)
 
 ## Purpose
@@ -89,6 +90,10 @@ Configure automatic printer discovery and IPP Everywhere driverless printing.
 See the role `defaults` file, for overridable vars:
 
   * [defaults/main/](../defaults/main/)
+
+## Role Dependencies
+
+* [ans_role_config_avahi](https://github.com/digimokan/ans_role_config_avahi)
 
 ## Contributing
 
