@@ -7,3 +7,6 @@
 - name: "Configure devfs for CUPS support"
   ansible.builtin.include_tasks: devfs.yml
 
+  - name: "Configure system-wide CUPS settings for all printers"
+    ansible.builtin.include_tasks: settings.yml
+

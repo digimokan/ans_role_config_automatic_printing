@@ -1,0 +1,3 @@
+# config file for system-wide cups settings that apply to all printers
+linux_cups_settings_path: '/etc/cups/cupsd.conf'
+
