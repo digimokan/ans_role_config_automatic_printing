@@ -4,7 +4,9 @@
     state: present
   become: true
   become_user: root
-  notify: restart_cupsd_service
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 
 - name: "Install the 'cups-filters' filters and misc-internals package"
   ansible.builtin.package:
@@ -12,7 +14,9 @@
     state: present
   become: true
   become_user: root
-  notify: restart_cupsd_service
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 
 - name: "Install the 'cups-pdf' print-to-pdf-support package"
   ansible.builtin.package:
@@ -20,13 +24,8 @@
     state: present
   become: true
   become_user: root
-  notify: restart_cupsd_service
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
   when: enable_print_to_pdf
-
-- name: "Enable 'cupsd' service to start at boot"
-  ansible.builtin.service:
-    name: cupsd
-    enabled: yes
-  become: true
-  become_user: root
 

@@ -1,6 +1,0 @@
-- name: "Install CUPS and related packages"
-  ansible.builtin.include_tasks: cups.yml
-
-- name: "Configure system-wide CUPS settings for all printers"
-  ansible.builtin.include_tasks: settings.yml
-

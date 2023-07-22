@@ -1,10 +1,20 @@
+- name: "Restart cups printer-server service"
+  ansible.builtin.service:
+    name: cups
+    state: restarted
+  become: true
+  become_user: root
+  listen: restart_automatic_printing_services
+  when: ansible_os_family == "Archlinux"
+
 - name: "Restart cupsd printer-server service"
   ansible.builtin.service:
     name: cupsd
     state: restarted
   become: true
   become_user: root
-  listen: restart_cupsd_service
+  listen: restart_automatic_printing_services
+  when: ansible_os_family == "FreeBSD"
 
 - name: "Restart devfs service"
   ansible.builtin.service:
@@ -12,5 +22,6 @@
     state: restarted
   become: true
   become_user: root
-  listen: restart_devfs_service
+  listen: restart_automatic_printing_services
+  when: ansible_os_family == "FreeBSD"
 

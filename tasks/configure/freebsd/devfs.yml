@@ -12,7 +12,9 @@
     mode: '644'
   become: true
   become_user: root
-  notify: restart_devfs_service
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 
 - name: "Add mime type to support CUPS printing"
   ansible.builtin.blockinfile:
@@ -25,7 +27,9 @@
     mode: '644'
   become: true
   become_user: root
-  notify: restart_devfs_service
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 
 - name: "Enable devfs service to start at boot"
   community.general.sysrc:
@@ -35,5 +39,7 @@
     state: present
   become: true
   become_user: root
-  notify: restart_devfs_service
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 

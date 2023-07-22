@@ -1,12 +1,15 @@
 - name: "Install the 'cups' print-client package"
-  community.general.pacman:
+  ansible.builtin.package:
     name: cups
     state: present
   become: true
   become_user: root
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 
 - name: "Install the 'cups-pdf' print-to-pdf-support package"
-  community.general.pacman:
+  ansible.builtin.package:
     name: cups-pdf
     state: present
     # NOTE: cannot currently mark asdeps, since cups-pdf not tagged as opt pkg
@@ -14,12 +17,7 @@
   become: true
   become_user: root
   when: enable_print_to_pdf
-
-- name: "Ensure 'cups' service is started, and enable it to start at boot"
-  ansible.builtin.service:
-    name: cups
-    state: started
-    enabled: yes
-  become: true
-  become_user: root
+  notify:
+    - restart_automatic_printing_services
+    - "{{ notify_avahi_handler_on_auto_printing_change }}"
 
