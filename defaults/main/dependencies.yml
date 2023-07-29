@@ -1,4 +1,4 @@
 # this role requires the avahi service to be running
-# when not "", notify an avahi-role-handler to make it restart avahi services
-notify_avahi_handler_on_auto_printing_change: ""
+# if an ext role configures avahi, use this var to notify the ext role's handler
+notify_avahi_handler_on_auto_printing_change: "no-op"
 

@@ -5,8 +5,7 @@
   become: true
   become_user: root
   listen: restart_automatic_printing_services
-  when: (ansible_os_family == "Archlinux") and
-        (notify_avahi_handler_on_auto_printing_change)
+  when: ansible_os_family == "Archlinux"
 
 - name: "Restart cupsd printer-server service"
   ansible.builtin.service:
@@ -15,8 +14,7 @@
   become: true
   become_user: root
   listen: restart_automatic_printing_services
-  when: (ansible_os_family == "FreeBSD") and
-        (notify_avahi_handler_on_auto_printing_change)
+  when: ansible_os_family == "FreeBSD"
 
 - name: "Restart devfs service"
   ansible.builtin.service:
@@ -25,6 +23,5 @@
   become: true
   become_user: root
   listen: restart_automatic_printing_services
-  when: (ansible_os_family == "FreeBSD") and
-        (notify_avahi_handler_on_auto_printing_change)
+  when: ansible_os_family == "FreeBSD"
 
