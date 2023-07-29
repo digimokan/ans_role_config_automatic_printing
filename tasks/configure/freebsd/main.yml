@@ -1,7 +1,7 @@
 # ref: https://docs.freebsd.org/en/articles/cups/
 
 - name: "Configure cupsd settings"
-  ansible.builtin.include_tasks: cupds.yml
+  ansible.builtin.include_tasks: cupsd.yml
 
 - name: "Configure devfs settings"
   ansible.builtin.include_tasks: devfs.yml
