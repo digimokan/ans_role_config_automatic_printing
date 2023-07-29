@@ -83,7 +83,7 @@ Configure automatic printer discovery and IPP Everywhere driverless printing.
          ansible.builtin.include_role:
            name: ans_role_config_automatic_printing
          vars:
-           notify_avahi_handler_on_auto_printing_change: "an_avahi_role_handler_listener"
+           notify_avahi_handler_on_auto_printing_change: "{{ handler_to_restart_avahi_services }}"
    ```
 
 ## Role Options
