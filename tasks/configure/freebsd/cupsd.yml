@@ -2,7 +2,7 @@
   ansible.builtin.service:
     name: cupsd
     state: started
-    enabled: yes
+    enabled: true
   become: true
   become_user: root
   notify:
@@ -17,7 +17,7 @@
     line: >-
       ErrorPolicy abort-job
     state: present
-    create: no
+    create: false
   become: true
   become_user: root
   notify:

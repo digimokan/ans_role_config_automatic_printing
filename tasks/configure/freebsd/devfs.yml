@@ -7,7 +7,7 @@
       add path 'lpt*' mode 0660 group cups
     marker: "# {mark} ANSIBLE MANAGED BLOCK: cups print-device rules"
     state: present
-    create: yes
+    create: true
     owner: 'root'
     mode: '644'
   become: true
@@ -22,7 +22,7 @@
     block: 'application/octet-stream'
     marker: "# {mark} ANSIBLE MANAGED BLOCK: cups mime types"
     state: present
-    create: yes
+    create: true
     owner: 'root'
     mode: '644'
   become: true
