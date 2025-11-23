@@ -6,7 +6,7 @@
   become_user: root
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
 
 - name: "Install the 'cups-filters' filters and misc-internals package"
   ansible.builtin.package:
@@ -16,7 +16,7 @@
   become_user: root
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
 
 - name: "Install the 'cups-pdf' print-to-pdf-support package"
   ansible.builtin.package:
@@ -26,6 +26,6 @@
   become_user: root
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
-  when: enable_print_to_pdf
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
+  when: cfg_autoprint_enable_print_to_pdf
 

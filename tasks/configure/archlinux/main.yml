@@ -7,11 +7,11 @@
   become_user: root
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
 
-- name: "Configure '{{ linux_cups_settings_path }}' to abort jobs on printer error"
+- name: "Configure '{{ cfg_autoprint_linux_cups_settings_path }}' to abort jobs on printer error"
   ansible.builtin.lineinfile:
-    path: "{{ linux_cups_settings_path }}"
+    path: "{{ cfg_autoprint_linux_cups_settings_path }}"
     regexp: >-
       ^ErrorPolicy
     line: >-
@@ -22,5 +22,5 @@
   become_user: root
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
 

@@ -1,4 +1,4 @@
 # this role requires the avahi service to be running
 # this var must be used to notify the external avahi role's handler
-notify_avahi_handler_on_auto_printing_change: "no-op"
+cfg_autoprint_notify_avahi_handler_on_change: "no-op"
 

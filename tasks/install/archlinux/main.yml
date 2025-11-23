@@ -6,7 +6,7 @@
   become_user: root
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
 
 - name: "Install the 'cups-pdf' print-to-pdf-support package"
   ansible.builtin.package:
@@ -16,8 +16,8 @@
     # extra_args: "--asdeps"
   become: true
   become_user: root
-  when: enable_print_to_pdf
+  when: cfg_autoprint_enable_print_to_pdf
   notify:
     - restart_automatic_printing_services
-    - "{{ notify_avahi_handler_on_auto_printing_change }}"
+    - "{{ cfg_autoprint_notify_avahi_handler_on_change }}"
 

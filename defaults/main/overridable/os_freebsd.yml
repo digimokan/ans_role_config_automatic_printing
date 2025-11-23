@@ -1,0 +1,12 @@
+# config file for host info, network info, and services to start at boot
+cfg_autoprint_freebsd_rc_conf_path: '/etc/rc.conf'
+
+# config file for system-wide cups settings that apply to all printers
+cfg_autoprint_freebsd_cups_settings_path: '/usr/local/etc/cups/cupsd.conf'
+
+# path to devfs.rules config file
+cfg_autoprint_freebsd_devfs_rules_path: '/etc/devfs.rules'
+
+# path to cups mime-types config file
+cfg_autoprint_freebsd_cups_mime_types_path: '/usr/local/etc/cups/mime.types'
+
